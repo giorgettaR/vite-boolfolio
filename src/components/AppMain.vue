@@ -1,15 +1,24 @@
 <template>
+
   <div class="container">
-    <h2>Ecco i nostri post</h2>
-    <ul>
-      <li v-for="project in projects" :key="projects.title">
-        <h2>{{ project.title }}</h2>
-      </li>
-    </ul>
+    <div class="row">
+      <h2 class="p-3">Ecco i miei progetti</h2>
+        <ProjectCard v-for="project in projects" :project="project"/>
+    </div>
+    <div class="row d-flex" v-if="lastPage > 1">
+      <div class="d-flex gap-3 justify-content-center">
+        <p style="cursor: pointer" :class="n === currentPage ? 'text-primary' : ''"  @click="changePage(n)" v-for="n in lastPage" :key="n">
+          {{ n }}
+        </p>
+      </div>
+    </div>
   </div>
+  
 </template>
 
 <script>
+import ProjectCard from './ProjectCard.vue';
+
 import axios from 'axios'
 
 export default {
@@ -20,13 +29,20 @@ export default {
       lastPage: null
     }
   },
+  components: {
+    ProjectCard
+  },
   methods: {
+    changePage(n) {
+      if(n === this.currentPage) return
+      this.currentPage = n
+      this.fetchProjects()
+    },
     fetchProjects() {
 
       axios.get('http://127.0.0.1:8000/api/projects',{
         params: {
-          page: 1,
-          // perPage: 9
+          page: this.currentPage,
         }
       })
       .then((res) => {
