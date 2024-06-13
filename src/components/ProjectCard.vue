@@ -5,21 +5,29 @@
                 <div class="card-title">
                     <h1>{{ project.title }}</h1>
                 </div>
-                <div class="card-text">
+                <p class="card-text">
                     {{ project.description }}
-                </div>
+                </p>
                 <div class="card-body">
                     <a :href="project.repository_link"  class="card-link">Repository</a>
                 </div>
+                <div class="card-body">
+                    {{ project.type.name }}
+                </div>
+                <div  class="card-body d-flex">
+                    <h6 v-for="technology in project.technologies" class="p-2">
+                        {{ technology.name }}
+                    </h6>
+                </div>
+
             </div>
         </div>
     </div>
 </template>
   
-  <script>
-  import axios from 'axios'
-  
-  export default {
+<script>
+
+export default {
     data() {
         return {
 
@@ -31,10 +39,10 @@
         required: true
       }
     },
-  }
-  </script>
+}
+</script>
   
   
-  <style lang ="scss">
-  
-  </style>
+<style lang ="scss">
+
+</style>

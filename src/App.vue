@@ -1,19 +1,19 @@
 <template>
+  <Navbar />
   <main>
-    <AppMain />
+    <RouterView />
   </main>
 </template>
 
 <script>
-import AppMain from './components/AppMain.vue'
+import Navbar from './components/Navbar.vue'
 
 export default {
   components: {
-    AppMain,
+    Navbar
   },
   data() {
     return {
-      message: 'Ciao mondo'
     }
   }
 }
