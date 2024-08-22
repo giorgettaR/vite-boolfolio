@@ -19,7 +19,9 @@
                         {{ technology.name }}
                     </h6>
                 </div>
-
+                <li class="nav-item d-flex align-items-center p-2">
+                    <RouterLink :class="$route.fullPath === '/project' ? 'text-primary' : ''" :to="{ name: 'project', params: { slug: project.slug }}">Dettagli</RouterLink>
+                </li>
             </div>
         </div>
     </div>
@@ -30,7 +32,6 @@
 export default {
     data() {
         return {
-
         }
     },
     props: {
