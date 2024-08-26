@@ -2,11 +2,11 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-12">
+      <div v-if="project" class="col-12">
         <h1>{{ this.project.title }}</h1>
+        <p>{{ slug }}</p>
       </div>
     </div>
-    <p>{{ slug }}</p>
   </div>
   
 </template>
@@ -39,9 +39,8 @@ export default {
         console.log(res.data)
       })
       .catch((err)=> {
-        console.log(err)
-      }
-    ) 
+        this.$router.push({name: 'NotFound',params: {pathMatch: this.$route.path.substring(1).split('/')} })
+      }) 
     }
   },
   mounted() {

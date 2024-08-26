@@ -2,6 +2,8 @@
     <div class="col-3">
         <div class="card">
             <div class="card-body">
+                <!-- <img v-if="project.img" src="http://127.0.0.1:8000/storage/projects_images/9B5Web3xBcRLsQaeFVbvbls5M1jh2pVhH08XTgEw.jpg" class="card-img-top" alt=""> -->
+                <img v-if="project.img" :src="project.img_full_path" class="card-img-top" alt="">
                 <div class="card-title">
                     <h1>{{ project.title }}</h1>
                 </div>
@@ -20,7 +22,7 @@
                     </h6>
                 </div>
                 <li class="nav-item d-flex align-items-center p-2">
-                    <RouterLink :class="$route.fullPath === '/project' ? 'text-primary' : ''" :to="{ name: 'project', params: { slug: project.slug }}">Dettagli</RouterLink>
+                    <RouterLink :to="{ name: 'project', params: { slug: project.slug }}">Dettagli</RouterLink>
                 </li>
             </div>
         </div>

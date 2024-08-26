@@ -6,6 +6,7 @@ import Home from './pages/Home.vue'
 import Portfolio from './pages/Portfolio.vue'
 import Contact from './pages/Contact.vue'
 import Project from './pages/Project.vue'
+import NotFound from './pages/NotFound.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -13,7 +14,9 @@ const router = createRouter({
         { path: '/', name: 'home', component: Home },
         { path: '/portfolio', name: 'portfolio', component: Portfolio },
         { path: '/contact', name: 'contact', component: Contact },
-        { path: '/project/:slug', name: 'projects.show', component: Project, props: true },
+        { path: '/project/:slug', name: 'project', component: Project, props: true },
+        { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
+
     ],
 })
 
